@@ -8,8 +8,8 @@
   "license": "",
   "private": false,
   "scripts": {
-    "start": "unset NODE_OPTIONS && webpack-dev-server --mode development",
-    "build": "unset NODE_OPTIONS && webpack --mode production"
+    "start": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -35,6 +35,6 @@
     "webpack-dev-server": "3.1.*"
   },
   "engines": {
-    "node": "16.x"
+    "node": "16.13.0"
   }
 }

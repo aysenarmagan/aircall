@@ -8,8 +8,8 @@
   "license": "",
   "private": false,
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "start": "webpack-dev-server --mode development --port 8080",
+    "build": "webpack --mode production --port 8080"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",

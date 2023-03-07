@@ -8,7 +8,7 @@
   "license": "",
   "private": false,
   "scripts": {
-    "start": "webpack-dev-server --mode development --port 8080",
+    "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production"
   },
   "dependencies": {
@@ -36,6 +36,6 @@
     
   },
   "engines": {
-    "node": "16.13.0"
+    "node": "19.4.0"
   }
 }

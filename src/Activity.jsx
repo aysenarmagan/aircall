@@ -1,12 +1,21 @@
-import { Grid, IconButton, Box } from "@mui/material";
-import React from "react";
+import { Grid, Box } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import UnarchiveIcon from "@mui/icons-material/Unarchive";
+import React, { useState } from "react";
 import styled from "styled-components";
 import CallTypeIcon from "./CallTypeIcon.jsx";
 import CallTime from "./CallTime.jsx";
 import CallDetails from "./CallDetails.jsx";
 
-const Activity = ({ call }) => {
-  const { call_type, direction, from, via, created_at } = call;
+const Activity = ({
+  call,
+  isArchiveActionTriggered,
+  setIsArchiveActionTriggered,
+}) => {
+  const [isShown, setIsShown] = useState(false);
+
+  const { call_type, direction, from, via, created_at, is_archived, id } = call;
   const call_time = new Date(created_at);
   return (
     <Box
@@ -14,6 +23,12 @@ const Activity = ({ call }) => {
         border: "solid 2px grey",
         borderRadius: "15px",
         margin: "8px",
+      }}
+      onMouseEnter={() => {
+        setIsShown(true);
+      }}
+      onMouseLeave={() => {
+        setIsShown(false);
       }}
     >
       <Grid
@@ -28,8 +43,15 @@ const Activity = ({ call }) => {
         <Grid item xs={8}>
           <CallDetails from={from} via={via} />
         </Grid>
-        <Grid item xs={2} sx={{ textAlign: "center" }}>
-          <CallTime time={call_time} />
+        <Grid item xs={2} sx={{ textAlign: "center", height: "40px" }}>
+          <CallTime
+            time={call_time}
+            hoverState={isShown}
+            isArchived={is_archived}
+            isArchiveActionTriggered={isArchiveActionTriggered}
+            setIsArchiveActionTriggered={setIsArchiveActionTriggered}
+            call={call}
+          />
         </Grid>
       </Grid>
     </Box>

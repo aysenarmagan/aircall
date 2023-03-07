@@ -6,6 +6,7 @@ import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import ActivityFeed from "./ActivityFeed.jsx";
 import ArchiveAll from "./ArchiveAll.jsx";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Container = styled(Grid)`
   z-index: 100;
@@ -20,6 +21,12 @@ const App = () => {
   };
 
   const [isArchivedTab, setIsArchivedTab] = useState(false);
+  const [isArchiveAllInProgress, setIsArchiveAllInProgress] = useState(false);
+  const [isUnarchiveAllInProgress, setIsUnarchiveAllInProgress] = useState(false);
+  const [isArchiveActionTriggered, setIsArchiveActionTriggered] = useState(false);
+
+
+
   return (
     <Container
       container
@@ -34,9 +41,20 @@ const App = () => {
       <Grid item xs={1}>
         <Header isArchivedSelected={changeTab} />
       </Grid>
-      <Grid item xs={1} sx={{ margin: "0px 10px " }}>
-        <ArchiveAll />
-      </Grid>
+      {isArchiveAllInProgress || isUnarchiveAllInProgress ? (
+        <Grid item xs={1} sx={{ margin: "auto" }}>
+          <CircularProgress />
+        </Grid>
+      ) : (
+        <Grid item xs={1} sx={{ margin: "0px 10px " }}>
+          <ArchiveAll
+            isArchived={isArchivedTab}
+            setArchiveAllProgress={setIsArchiveAllInProgress}
+            setUnarchiveAllProgress={setIsUnarchiveAllInProgress}
+          />
+        </Grid>
+      )}
+
       <Grid
         item
         xs={9}
@@ -45,7 +63,13 @@ const App = () => {
           overflow: "scroll",
         }}
       >
-        <ActivityFeed isArchivedTab={isArchivedTab} />
+        <ActivityFeed
+          isArchivedTab={isArchivedTab}
+          isArchiveAllInProgress={isArchiveAllInProgress}
+          isUnarchiveAllInProgress={isUnarchiveAllInProgress}
+          isArchiveActionTriggered={isArchiveActionTriggered}
+          setIsArchiveActionTriggered={setIsArchiveActionTriggered}
+        />
       </Grid>
       <Grid item xs={1}>
         <Footer />

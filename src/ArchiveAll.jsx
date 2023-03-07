@@ -11,14 +11,14 @@ const ArchiveAll = ({
   const archiveUnarchiveAll = () => {
     isArchived ? setUnarchiveAllProgress(true) : setArchiveAllProgress(true);
     fetch(
-      "https://cerulean-marlin-wig.cyclic.app/activities"
+      "https://charming-bat-singlet.cyclic.app/https://cerulean-marlin-wig.cyclic.app/activities"
     )
       .then((response) => response.json())
       .then((data) => {
         data.forEach((call) => {
           if (call.is_archived === !isArchived) return;
           fetch(
-            `https://cerulean-marlin-wig.cyclic.app/activities/${call.id}`,
+            `https://charming-bat-singlet.cyclic.app/https://cerulean-marlin-wig.cyclic.app/activities/${call.id}`,
             {
               method: "PATCH",
               headers: {

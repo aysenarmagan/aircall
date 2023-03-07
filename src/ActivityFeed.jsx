@@ -14,7 +14,7 @@ const ActivityFeed = ({
 
   useEffect(() => {
     fetch(
-      "https://cerulean-marlin-wig.cyclic.app/activities"
+      "https://charming-bat-singlet.cyclic.app/https://cerulean-marlin-wig.cyclic.app/activities"
     )
       .then((response) => response.json())
       .then((data) => setActivities(data))

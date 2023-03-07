@@ -17,7 +17,7 @@ const CallTime = ({
     if (call.is_archived === !isArchived) return;
     setIsArchiveActionTriggered(true);
     fetch(
-      `https://cerulean-marlin-wig.cyclic.app/activities/${call.id}`,
+      `https://charming-bat-singlet.cyclic.app/https://cerulean-marlin-wig.cyclic.app/activities/${call.id}`,
       {
         method: "PATCH",
         headers: {
